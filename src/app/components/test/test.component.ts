@@ -26,6 +26,7 @@ export class TestComponent implements OnInit {
 
   openDialog() {
     this.dialog.open(MessageBoxComponent, {
+      panelClass: 'dailog',
       position: { top: '100px' }
     });
   }
