@@ -37,7 +37,7 @@ export class DataService<T> {
   }
 
   Delete(id) {
-    return this.Http.put<T>(this.domain + this.url + '/delete/' + id, { headers: this.headers });
+    return this.Http.delete<T>(this.domain + this.url + '/delete/' + id, { headers: this.headers });
   }
 
   changeCurrentItem(item: T) {

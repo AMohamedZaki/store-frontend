@@ -9,15 +9,17 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { MessageBoxComponent } from './components/message-box/message-box.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { TestComponent } from './components/test/test.component';
+import { ProductContainerComponent } from './components/products/product-container/product-container.component';
 import { ProductService } from './service/product.service';
+import { EditformComponent } from './components/products/editform/editform.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    TestComponent,
-    MessageBoxComponent
+    MessageBoxComponent,
+    ProductContainerComponent,
+    EditformComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { ProductService } from './service/product.service';
     MatTooltipModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: 'test', component: TestComponent},
+      { path: 'product', component: ProductContainerComponent},
       { path: 'Message', component: MessageBoxComponent}
     ])
   ],
