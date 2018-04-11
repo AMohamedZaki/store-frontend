@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { Product } from '../../../Model/product';
 import { ProductService } from '../../../service/product.service';
 import { BaseComponent } from '../../base/base.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTableDataSource } from '@angular/material';
+import { PtoductFormComponent } from '../ptoduct-form/ptoduct-form.component';
+
 
 @Component({
   selector: 'app-product-container',
@@ -12,10 +14,11 @@ import { MatDialog } from '@angular/material';
 export class ProductContainerComponent extends BaseComponent implements OnInit {
 
   productList: Product[];
+  displayedColumns = ['name', 'price', 'cost', 'description'];
+
   constructor(private productService: ProductService, dialog: MatDialog) {
     super(dialog);
     this.refreshList();
-
   }
 
   ngOnInit() {
@@ -38,6 +41,16 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
 
   refreshList() {
     this.productService.Get().subscribe((item: Product[]) => this.productList = item);
+  }
+
+  // open the form in Dialog
+  onEditClick(product: Product) {
+    this.dialog.open(PtoductFormComponent, {
+      maxHeight: '530px',
+      width: '550px',
+      panelClass: 'dailog',
+      position: { top: '25px' }
+    });
   }
 
 }

@@ -1,0 +1,9 @@
+.prod-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.prod-container > * {
+width: 100%;
+}
+  

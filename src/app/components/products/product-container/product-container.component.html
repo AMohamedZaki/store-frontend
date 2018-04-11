@@ -1,5 +1,6 @@
 
-<table class="table table-hover">
+
+ <table class="table table-hover">
   <thead>
     <tr>
       <th>Product</th>
@@ -12,13 +13,13 @@
   </thead>
   <tbody>
     <tr *ngFor="let prod of productList">
-      <th> {{ prod.name }}</th>
+      <td> {{ prod.name }}</td>
       <td> {{ prod.price }}</td>
       <td> {{ prod.cost }}</td>
       <td> {{ prod.description }}</td>
-      <td> <!-- For The Category --> </td>
-      <td>  <a class="btn text-justify"> <i class="fa fa-edit fa-lg "></i> </a>   |  
-            <a class="btn text-danger" (click)="dialogconformMessage(prod)"> <i class="fa fa-trash fa-lg "></i> </a> </td>
+      <td> </td>
+      <td>  <a (click)="onEditClick(prod)" matTooltip="Edit" matTooltipPosition="left"  class="btn text-justify"> <i class="fa fa-edit fa-lg "></i> </a>   |  
+            <a class="btn text-danger" matTooltip="Delete" matTooltipPosition="right" (click)="dialogconformMessage(prod)"> <i class="fa fa-trash fa-lg "></i> </a> </td>
     </tr>
   </tbody>
-</table>
+</table> 

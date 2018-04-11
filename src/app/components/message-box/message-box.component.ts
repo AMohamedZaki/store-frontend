@@ -13,7 +13,6 @@ export class MessageBoxComponent implements OnInit {
   body: string;
   constructor(public dialogRef: MatDialogRef<MessageBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-      console.log(data);
     if (data as Options && Object.keys(data).length > 0) {
       this.Header = data.header;
       this.body = data.body;

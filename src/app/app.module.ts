@@ -1,17 +1,15 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { MatNativeDateModule, MatTooltipModule } from '@angular/material';
-import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { MessageBoxComponent } from './components/message-box/message-box.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductContainerComponent } from './components/products/product-container/product-container.component';
+import { PtoductFormComponent } from './components/products/ptoduct-form/ptoduct-form.component';
 import { ProductService } from './service/product.service';
-import { EditformComponent } from './components/products/editform/editform.component';
+import { MaterialModule } from './module/material/material.module';
 
 @NgModule({
   declarations: [
@@ -19,22 +17,17 @@ import { EditformComponent } from './components/products/editform/editform.compo
     NavbarComponent,
     MessageBoxComponent,
     ProductContainerComponent,
-    EditformComponent
+    PtoductFormComponent
   ],
   imports: [
     BrowserModule,
+    MaterialModule,
     HttpClientModule,
-    MatDialogModule,
-    MatNativeDateModule,
-    MatTooltipModule,
-    BrowserAnimationsModule,
     RouterModule.forRoot([
-      { path: 'product', component: ProductContainerComponent},
-      { path: 'Message', component: MessageBoxComponent}
+      { path: 'product', component: ProductContainerComponent },
+      { path: 'Message', component: MessageBoxComponent },
+      { path: 'editform', component: PtoductFormComponent }
     ])
-  ],
-  entryComponents: [
-    MessageBoxComponent
   ],
   providers: [
     ProductService
