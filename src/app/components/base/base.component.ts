@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { MessageBoxComponent } from '../message-box/message-box.component';
-import { Options } from '../../Model/options';
+import { Options } from '../../model/options';
 
 export class BaseComponent implements OnInit {
 

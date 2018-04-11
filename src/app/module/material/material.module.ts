@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatButtonModule, MatNativeDateModule, MatTooltipModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
@@ -22,10 +23,10 @@ import { PtoductFormComponent } from '../../components/products/ptoduct-form/pto
     MatInputModule,
     MatTableModule,
     MatMenuModule,
+    MatProgressBarModule,
     MatButtonModule,
     MatSelectModule,
   ],
-  entryComponents: [MessageBoxComponent, PtoductFormComponent ],
   declarations: []
 })
 export class MaterialModule { }

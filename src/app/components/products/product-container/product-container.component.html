@@ -1,7 +1,22 @@
+<!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
 
 
- <table class="table table-hover">
-  <thead>
+
+  <button class="btn btn-primary btn-sm small" (click)="openDialog()"
+      matTooltip="Add Product" matTooltipPosition="before">
+    <i class="fa fa-plus text-white"></i>
+  </button>
+
+  <button class="btn btn-secondary btn-sm small"
+      (click)="refreshList()"
+      matTooltip="Refresh" matTooltipPosition="before">
+    <i class="fa fa-refresh text-white"></i>
+  </button>
+
+
+
+<table class="table table-hover table-bordered table-sm">
+  <thead class="bg-light">
     <tr>
       <th>Product</th>
       <th>Price</th>
@@ -17,9 +32,15 @@
       <td> {{ prod.price }}</td>
       <td> {{ prod.cost }}</td>
       <td> {{ prod.description }}</td>
-      <td> </td>
-      <td>  <a (click)="onEditClick(prod)" matTooltip="Edit" matTooltipPosition="left"  class="btn text-justify"> <i class="fa fa-edit fa-lg "></i> </a>   |  
-            <a class="btn text-danger" matTooltip="Delete" matTooltipPosition="right" (click)="dialogconformMessage(prod)"> <i class="fa fa-trash fa-lg "></i> </a> </td>
+      <td> {{ prod.productCategories.name}}</td>
+      <td>
+        <a (click)="onEditClick(prod)" matTooltip="Edit" matTooltipPosition="left" class="btn text-justify">
+          <i class="fa fa-edit fa-lg "></i>
+        </a> |
+        <a class="btn text-danger" matTooltip="Delete" matTooltipPosition="right" (click)="dialogconformMessage(prod)">
+          <i class="fa fa-trash fa-lg "></i>
+        </a>
+      </td>
     </tr>
   </tbody>
-</table> 
+</table>

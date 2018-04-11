@@ -1,49 +1,61 @@
 <div class="card">
   <div class="card-header">
-      Product Form
+    <ng-template [ngIf]="status === 'new'">
+      <span class="h4"> New Product </span>
+    </ng-template>
+    <ng-template [ngIf]="status === 'edit'">
+      <span class="h4"> Edit Product</span>
+    </ng-template>
+    <button type="button" class="close" aria-label="Close" (click)="closeDialog()">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
   <div class="card-body">
-      <form>
-          <div class="prod-container">
-            <mat-form-field>
-              <input matInput id="prodName" type="text" placeholder="Name">
-            </mat-form-field>
-        
-            <mat-form-field>
-              <mat-select placeholder="Category">
-                <mat-option value="">Category 1</mat-option>
-                <mat-option value="">Category 2</mat-option>
-              </mat-select>
-            </mat-form-field>
-        
-        
-            <mat-form-field>
-              <input matInput type="number" placeholder="Cost"  min="0">
-              <span matPrefix>$&nbsp;</span>
-              <span matSuffix>.00</span>
-            </mat-form-field>
-        
-        
-            <mat-form-field>
-              <input matInput type="number" placeholder="Price"  min="0">
-              <span matPrefix>$&nbsp;</span>
-              <span matSuffix>.00</span>
-            </mat-form-field>
-        
-            <mat-form-field>
-              <textarea name="Description" placeholder="Description" matInput id="prodDescription" cols="50" rows="8" class="form-control form-control-sm"></textarea>
-            </mat-form-field>
-        
-        
-            <div class="form-group">
-              <button mat-button class="btn btn-primary btn-sm text-white "  type="submit">Save</button>
-              <button mat-button class="btn btn-danger btn-sm text-white "  type="reset">Cancel</button>
-            </div>
-          </div>
-        </form>
+
+    <form [formGroup]="form">
+      <div class="prod-container">
+        <mat-form-field>
+          <input matInput id="prodName" type="text" placeholder="Name" [(ngModel)]="product.name" formControlName="productName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Category" formControlName="productCategory" [(ngModel)]="product.categoryId">
+            <mat-option *ngFor="let item of category$ | async" [value]="item.id">
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput type="number" placeholder="Cost" min="0" formControlName="productCost" [(ngModel)]="product.cost">
+          <span matPrefix>£&nbsp;</span>
+          <span matSuffix>.00</span>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput type="number" placeholder="Price" min="0" formControlName="productPrice" [(ngModel)]="product.price">
+          <span matPrefix>£&nbsp;</span>
+          <span matSuffix>.00</span>
+        </mat-form-field>
+
+        <mat-form-field>
+          <textarea name="Description" placeholder="Description" 
+                    matInput id="prodDescription"
+                    formControlName="productDescription"
+                    [(ngModel)]="product.description"
+                    cols="50" rows="8"
+                    class="form-control form-control-sm"></textarea>
+        </mat-form-field>
+
+
+        <div class="form-group">
+          <button mat-button class="btn btn-primary btn-sm" disabled type="submit">Save</button>
+        </div>
+      </div>
+    </form>
 
   </div>
 
 </div>
-
-

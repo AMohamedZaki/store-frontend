@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Environment } from '../Environment/Environment';
+import { Environment } from '../environment/Environment';
 
 @Injectable()
 export class DataService<T> {

@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { Product } from '../../../Model/product';
+import { Product } from '../../../model/product';
 import { ProductService } from '../../../service/product.service';
 import { BaseComponent } from '../../base/base.component';
 import { MatDialog, MatTableDataSource } from '@angular/material';
@@ -14,7 +14,6 @@ import { PtoductFormComponent } from '../ptoduct-form/ptoduct-form.component';
 export class ProductContainerComponent extends BaseComponent implements OnInit {
 
   productList: Product[];
-  displayedColumns = ['name', 'price', 'cost', 'description'];
 
   constructor(private productService: ProductService, dialog: MatDialog) {
     super(dialog);
@@ -40,17 +39,32 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
 
 
   refreshList() {
-    this.productService.Get().subscribe((item: Product[]) => this.productList = item);
+    this.productService.Get().subscribe((item: Product[]) => {
+      this.productList = item;
+    });
   }
 
   // open the form in Dialog
   onEditClick(product: Product) {
     this.dialog.open(PtoductFormComponent, {
       maxHeight: '530px',
+      data: { product: product, status: 'edit' },
       width: '550px',
       panelClass: 'dailog',
       position: { top: '25px' }
     });
   }
+
+  // open dialog when add new Product
+  openDialog() {
+    const dialogRef = this.dialog.open(PtoductFormComponent, {
+      data: { status: 'new' },
+      maxHeight: '530px',
+      width: '550px',
+      panelClass: 'dailog',
+      position: { top: '25px' }
+    });
+  }
+
 
 }
