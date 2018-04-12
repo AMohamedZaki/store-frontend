@@ -15,7 +15,18 @@
     <form [formGroup]="form">
       <div class="prod-container">
         <mat-form-field>
-          <input matInput id="prodName" type="text" placeholder="Name" [(ngModel)]="product.name" formControlName="productName">
+          <input matInput id="prodName" type="text"
+           placeholder="Name"
+           required
+           [(ngModel)]="product.name" formControlName="productName">
+          <mat-error *ngIf="getElement('productName').touched && getElement('productName').invalid"> 
+            <div *ngIf="getElement('productName').errors.required">
+              this field is required
+            </div>
+            <div *ngIf="getElement('productName').errors.nameShouldBeUnique">
+              this Name is aready used
+            </div>
+          </mat-error>
         </mat-form-field>
 
         <mat-form-field>

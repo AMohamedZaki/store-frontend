@@ -1,9 +1,11 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Product } from '../../../Model/product';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { ProductCategories } from '../../../model/ProductCategories';
 import { CategoryService } from '../../../service/category.service';
+import { ValidationNameNotToken, NameValidator } from '../../../validators/checkNames.validators';
+import { ProductService } from '../../../service/product.service';
 
 @Component({
   selector: 'app-ptoduct-form',
@@ -18,14 +20,15 @@ export class PtoductFormComponent implements OnInit {
   category$;
 
   form = new FormGroup({
-    productName: new FormControl() ,
-    productPrice: new FormControl() ,
-    productCost: new FormControl() ,
+    productName: new FormControl('', [Validators.required], NameValidator.validate),
+    productPrice: new FormControl(),
+    productCost: new FormControl(),
     productDescription: new FormControl(),
     productCategory: new FormControl
   });
   constructor(
     private categoryService: CategoryService,
+    private productService: ProductService,
     public dialogRef: MatDialogRef<PtoductFormComponent>,
     @Inject(MAT_DIALOG_DATA) private data: any) {
     if (data && Object.keys(data).length > 0) {
@@ -44,6 +47,9 @@ export class PtoductFormComponent implements OnInit {
     }
   }
 
+  getElement(item: string): AbstractControl {
+    return this.form.get(item);
+  }
 
   closeDialog() {
     this.dialogRef.close();

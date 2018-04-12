@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { Environment } from '../environment/Environment';
 
 @Injectable()
-export class DataService<T> {
+export abstract class DataService<T> {
 
   domain = Environment.domain;
   url: string;

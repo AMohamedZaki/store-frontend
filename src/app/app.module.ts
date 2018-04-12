@@ -28,7 +28,6 @@ import { CategoryService } from './service/category.service';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: '', component: PtoductFormComponent },
       { path: 'product', component: ProductContainerComponent },
       { path: 'editform', component: PtoductFormComponent }
     ])
