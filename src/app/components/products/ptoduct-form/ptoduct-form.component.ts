@@ -4,7 +4,7 @@ import { Product } from '../../../Model/product';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { ProductCategories } from '../../../model/ProductCategories';
 import { CategoryService } from '../../../service/category.service';
-import { ValidationNameNotToken, NameValidator } from '../../../validators/checkNames.validators';
+import { ValidationNameNotToken } from '../../../validators/checkNames.validators';
 import { ProductService } from '../../../service/product.service';
 
 @Component({
@@ -20,11 +20,11 @@ export class PtoductFormComponent implements OnInit {
   category$;
 
   form = new FormGroup({
-    productName: new FormControl('', [Validators.required], NameValidator.validate),
-    productPrice: new FormControl(),
-    productCost: new FormControl(),
-    productDescription: new FormControl(),
-    productCategory: new FormControl
+    name: new FormControl('', [Validators.required]),
+    price: new FormControl(),
+    cost: new FormControl(),
+    description: new FormControl(),
+    categoryId: new FormControl
   });
   constructor(
     private categoryService: CategoryService,
@@ -50,6 +50,18 @@ export class PtoductFormComponent implements OnInit {
   getElement(item: string): AbstractControl {
     return this.form.get(item);
   }
+
+  submitForm() {
+    console.log(this.form.value);
+
+    if (this.status === 'edit') {
+      this.productService.Put(this.data.product.id, this.form.value).subscribe(
+        () => this.dialogRef.close('done'));
+    } else {
+      this.productService.Post(this.form.value).subscribe(() => this.dialogRef.close('done') );
+    }
+  }
+
 
   closeDialog() {
     this.dialogRef.close();

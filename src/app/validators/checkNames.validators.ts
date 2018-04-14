@@ -22,19 +22,19 @@ export class ValidationNameNotToken {
     //     });
     // }
 
-    static nameShouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
-        return new Promise((resolve, rejected) => {
-            return (productService: ProductService) => {
-                // console.log(productService);
-                console.log('s');
-                if (control.value as string) {
-                    productService.chackProductName(control.value).subscribe((Unique: boolean) => {
-                        return Unique ? resolve({ 'nameShouldBeUnique': true }) : resolve(null);
-                    });
-                }
-            };
-        });
-    }
+    // static nameShouldBeUnique(control: AbstractControl): Promise<ValidationErrors | null> {
+    //     return new Promise((resolve, rejected) => {
+    //         return (productService: ProductService) => {
+    //             // console.log(productService);
+    //             console.log('s');
+    //             if (control.value as string) {
+    //                 productService.chackProductName(control.value).subscribe((Unique: boolean) => {
+    //                     return Unique ? resolve({ 'nameShouldBeUnique': true }) : resolve(null);
+    //                 });
+    //             }
+    //         };
+    //     });
+    // }
 
 }
 
