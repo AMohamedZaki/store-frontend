@@ -82,6 +82,10 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
       width: '550px',
       panelClass: 'dailog',
       position: { top: '25px' }
+    }).afterClosed().subscribe((item) => {
+      if (item === 'done') {
+        this.refreshList();
+      }
     });
   }
 
@@ -93,6 +97,10 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
       width: '550px',
       panelClass: 'dailog',
       position: { top: '25px' }
+    }).afterClosed().subscribe((item) => {
+      if (item === 'done') {
+        this.refreshList();
+      }
     });
   }
 
