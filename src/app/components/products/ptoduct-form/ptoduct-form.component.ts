@@ -4,7 +4,7 @@ import { Product } from '../../../Model/product';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { ProductCategories } from '../../../model/ProductCategories';
 import { CategoryService } from '../../../service/category.service';
-import { ValidationNameNotToken, NameValidator } from '../../../validators/checkNames.validators';
+import { ValidationNameNotToken } from '../../../validators/checkNames.validators';
 import { ProductService } from '../../../service/product.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class PtoductFormComponent implements OnInit {
   category$;
 
   form = new FormGroup({
-    productName: new FormControl('', [Validators.required], NameValidator.validate),
+    productName: new FormControl('', [Validators.required]),
     productPrice: new FormControl(),
     productCost: new FormControl(),
     productDescription: new FormControl(),

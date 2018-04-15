@@ -16,6 +16,9 @@ export abstract class DataService<T> {
   private currentItemSource = new BehaviorSubject<T>(null);
   private currentItemsSource = new BehaviorSubject<T[]>([]);
 
+  currentItem = this.currentItemSource.asObservable();
+  currentItems = this.currentItemsSource.asObservable();
+
   constructor(private Http: HttpClient) {
     this.headers = new HttpHeaders()
       .set('Content-Type', 'application/json')

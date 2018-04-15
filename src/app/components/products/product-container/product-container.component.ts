@@ -13,11 +13,39 @@ import { PtoductFormComponent } from '../ptoduct-form/ptoduct-form.component';
 })
 export class ProductContainerComponent extends BaseComponent implements OnInit {
 
-  productList: Product[];
+  productList: Product[] = [];
+  currentProductList: Product[] = [];
+
+  length: number;
+  totalPageNumber: number;
+  pagingList: number[] = [];
+  priveusIndex = 0;
+  indexSize = 0;
+
+  litsStatus = '';
+  selectedIndex = 1;
 
   constructor(private productService: ProductService, dialog: MatDialog) {
     super(dialog);
     this.refreshList();
+
+    // For Paging
+    this.productService.currentItems.subscribe((item: Product[]) => {
+      this.length = item.length;
+      if (this.length > 0) {
+
+        this.totalPageNumber = Math.floor(this.length / 5);
+        (this.length % 5) > 0 ? this.totalPageNumber += 1 : this.totalPageNumber += 0;
+        for (let index = 0; index < this.totalPageNumber; index++) {
+          this.pagingList[index] = index + 1;
+        }
+
+        this.currentProductList = this.productList;
+        this.currentProductList = this.currentProductList.slice(0, 5);
+
+      }
+    });
+
   }
 
   ngOnInit() {
@@ -39,8 +67,10 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
 
 
   refreshList() {
-    this.productService.Get().subscribe((item: Product[]) => {
-      this.productList = item;
+    this.selectedIndex = 1;
+    this.productService.Get().subscribe((items: Product[]) => {
+      this.productList = items;
+      this.productService.changeCurrentItems(this.productList);
     });
   }
 
@@ -64,6 +94,43 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
       panelClass: 'dailog',
       position: { top: '25px' }
     });
+  }
+
+  changePageIndex(index: number) {
+    this.indexSize = index * 5;
+    this.selectedIndex = index;
+    this.priveusIndex = this.indexSize - 5;
+    this.currentProductList = this.productList;
+    this.currentProductList = this.currentProductList.slice(this.priveusIndex, this.indexSize);
+  }
+
+  sortItem(header) {
+    console.log(this.litsStatus);
+    if (this.litsStatus === 'desc' || this.litsStatus === '') {
+      this.currentProductList = this.currentProductList.sort((fItem, sItem) => {
+        const first = fItem[header.toLowerCase()].toLowerCase();
+        const second = sItem[header.toLowerCase()].toLowerCase();
+        if (first > second) {
+          return 1;
+        } else if (first < second) {
+          return -1;
+        }
+        return 0;
+      });
+      this.litsStatus = 'acs';
+    } else if (this.litsStatus === 'acs') {
+      this.currentProductList = this.currentProductList.sort((fItem, sItem) => {
+        const first = fItem[header.toLowerCase()].toLowerCase();
+        const second = sItem[header.toLowerCase()].toLowerCase();
+        if (first > second) {
+          return -1;
+        } else if (first < second) {
+          return 1;
+        }
+        return 0;
+      });
+      this.litsStatus = 'desc';
+    }
   }
 
 
