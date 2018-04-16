@@ -19,25 +19,28 @@
   <thead class="bg-light">
     <tr>
       <th class="header-pointer" (click)="sortItem('name')">Product
-        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' , down: litsStatus === 'desc'}">
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' && headerName === 'name' , down: litsStatus === 'desc' && headerName === 'name'}">
         </li>
       </th>
-      <th class="header-pointer" (click)="sortItem('Price')">Price
-        <li class="arrow alain" [ngClass]="{up: litsStatus === 'acs' , down: litsStatus === 'desc'}"></li>
+       <th class="header-pointer" (click)="sortItem('Price')">Price
+        <li class="arrow alain" [ngClass]="{up: litsStatus === 'acs' && headerName === 'Price' , down: litsStatus === 'desc' && headerName === 'Price'}"></li>
       </th>
       <th class="header-pointer" (click)="sortItem('Cost')">Cost
-        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' , down: litsStatus === 'desc'}"></li>
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' && headerName === 'Cost' , down: litsStatus === 'desc' && headerName === 'Cost'}"></li>
       </th>
       <th class="header-pointer" (click)="sortItem('Description')">Description
-        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' , down: litsStatus === 'desc'}"></li>
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs'&& headerName === 'Description' , down: litsStatus === 'desc' && headerName === 'Description'}"></li>
       </th>
+      
       <th class="header-pointer" (click)="sortItem('productCategories.name')">Category
-        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' , down: litsStatus === 'desc'}"></li>
-      </th>
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' && headerName === 'productCategories.name' , down: litsStatus === 'desc' && headerName === 'productCategories.name'}"></li>
+      </th> 
+
       <th class="header-pointer" (click)="sortItem('productCategories.id')">Id
-        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' , down: litsStatus === 'desc'}"></li>
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' && headerName === 'productCategories.id' , down: litsStatus === 'desc' && headerName === 'productCategories.id'}"></li>
       </th>
-      <th></th>
+
+      <th></th> 
     </tr>
   </thead>
   <tbody>

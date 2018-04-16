@@ -22,6 +22,7 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
   priveusIndex = 0;
   indexSize = 0;
 
+  headerName: string;
   litsStatus = '';
   selectedIndex = 1;
 
@@ -116,6 +117,10 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
     let header = '', arrayElementName = '';
     let firstElement: any, secondElement: any;
 
+    if (propertyName !== this.headerName) {
+      this.litsStatus = '' ;
+      this.headerName = propertyName;
+    }
     // inside the array of the object
     if (propertyName.includes('.')) {
       const charindex = propertyName.indexOf('.');
@@ -159,6 +164,5 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
     });
 
     (this.litsStatus === 'desc' || this.litsStatus === '') ? this.litsStatus = 'acs' : this.litsStatus = 'desc';
-
   }
 }
