@@ -1,11 +1,16 @@
 .header-pointer { 
     cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 
 .arrow {
     display: inline-block;
     padding: 3px;
+    text-align: right
   }
   
 .up {

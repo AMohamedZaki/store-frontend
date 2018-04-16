@@ -52,8 +52,6 @@ export class PtoductFormComponent implements OnInit {
   }
 
   submitForm() {
-    console.log(this.form.value);
-
     if (this.status === 'edit') {
       this.productService.Put(this.data.product.id, this.form.value).subscribe(
         () => this.dialogRef.close('done'));

@@ -34,14 +34,14 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
       this.length = item.length;
       if (this.length > 0) {
 
-        this.totalPageNumber = Math.floor(this.length / 5);
-        (this.length % 5) > 0 ? this.totalPageNumber += 1 : this.totalPageNumber += 0;
+        this.totalPageNumber = Math.floor(this.length / 10);
+        (this.length % 10) > 0 ? this.totalPageNumber += 1 : this.totalPageNumber += 0;
         for (let index = 0; index < this.totalPageNumber; index++) {
           this.pagingList[index] = index + 1;
         }
 
         this.currentProductList = this.productList;
-        this.currentProductList = this.currentProductList.slice(0, 5);
+        this.currentProductList = this.currentProductList.slice(0, 10);
 
       }
     });
@@ -105,41 +105,60 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
   }
 
   changePageIndex(index: number) {
-    this.indexSize = index * 5;
+    this.indexSize = index * 10;
     this.selectedIndex = index;
-    this.priveusIndex = this.indexSize - 5;
+    this.priveusIndex = this.indexSize - 10;
     this.currentProductList = this.productList;
     this.currentProductList = this.currentProductList.slice(this.priveusIndex, this.indexSize);
   }
 
-  sortItem(header) {
-    console.log(this.litsStatus);
-    if (this.litsStatus === 'desc' || this.litsStatus === '') {
-      this.currentProductList = this.currentProductList.sort((fItem, sItem) => {
-        const first = fItem[header.toLowerCase()].toLowerCase();
-        const second = sItem[header.toLowerCase()].toLowerCase();
-        if (first > second) {
-          return 1;
-        } else if (first < second) {
-          return -1;
-        }
-        return 0;
-      });
-      this.litsStatus = 'acs';
-    } else if (this.litsStatus === 'acs') {
-      this.currentProductList = this.currentProductList.sort((fItem, sItem) => {
-        const first = fItem[header.toLowerCase()].toLowerCase();
-        const second = sItem[header.toLowerCase()].toLowerCase();
-        if (first > second) {
-          return -1;
-        } else if (first < second) {
-          return 1;
-        }
-        return 0;
-      });
-      this.litsStatus = 'desc';
+  sortItem(propertyName: string) {
+    let header = '', arrayElementName = '';
+    let firstElement: any, secondElement: any;
+
+    // inside the array of the object
+    if (propertyName.includes('.')) {
+      const charindex = propertyName.indexOf('.');
+      const arrayName = propertyName.substring(0, charindex);
+      header = arrayName;
+      arrayElementName = propertyName.substring(charindex + 1);
+    } else {
+      header = propertyName;
     }
+    this.currentProductList = this.currentProductList.sort((fItem, sItem) => {
+      if (fItem[header] instanceof Object) {
+        if (typeof fItem[header][arrayElementName.toLowerCase()] === 'number') {
+          firstElement = fItem[header][arrayElementName.toLowerCase()];
+          secondElement = sItem[header][arrayElementName.toLowerCase()];
+        } else {
+          firstElement = fItem[header][arrayElementName.toLowerCase()].toLowerCase();
+          secondElement = sItem[header][arrayElementName.toLowerCase()].toLowerCase();
+        }
+      } else if (typeof fItem[header.toLowerCase()] === 'number') {
+        firstElement = fItem[header.toLowerCase()];
+        secondElement = sItem[header.toLowerCase()];
+      } else {
+        firstElement = fItem[header.toLowerCase()].toLowerCase();
+        secondElement = sItem[header.toLowerCase()].toLowerCase();
+      }
+      if (this.litsStatus === 'desc' || this.litsStatus === '') {
+        if (firstElement > secondElement) {
+          return 1;
+        } else if (firstElement < secondElement) {
+          return -1;
+        }
+        return 0;
+      } else if (this.litsStatus === 'acs') {
+        if (firstElement > secondElement) {
+          return -1;
+        } else if (firstElement < secondElement) {
+          return 1;
+        }
+        return 0;
+      }
+    });
+
+    (this.litsStatus === 'desc' || this.litsStatus === '') ? this.litsStatus = 'acs' : this.litsStatus = 'desc';
+
   }
-
-
 }
