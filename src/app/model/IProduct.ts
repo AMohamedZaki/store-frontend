@@ -1,7 +1,7 @@
 
-import { ProductCategories } from './ProductCategories';
+import { IProductCategories } from './ProductCategories';
 
-export interface Product {
+export interface IProduct {
     id?: number;
     name: string;
     code: string;
@@ -9,5 +9,5 @@ export interface Product {
     cost: number;
     description?: string;
     categoryId?: number;
-    productCategories?: ProductCategories;
+    productCategories?: IProductCategories;
 }

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
-import { Product } from '../model/product';
+import { IProduct } from '../model/product';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable()
-export class ProductService extends DataService<Product> {
+export class ProductService extends DataService<IProduct> {
 
   constructor(private http: HttpClient) {
     super(http);

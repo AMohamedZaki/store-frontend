@@ -1,0 +1,64 @@
+<!-- <mat-progress-bar mode="indeterminate"></mat-progress-bar> -->
+
+
+
+<button class="btn btn-primary btn-sm small" (click)="openDialog()" matTooltip="Add Product" matTooltipPosition="before">
+  <i class="fa fa-plus text-white"></i>
+</button>
+
+<button class="btn btn-secondary btn-sm small" (click)="refreshList()" matTooltip="Refresh" matTooltipPosition="before">
+  <i class="fa fa-refresh text-white"></i>
+</button>
+
+
+
+<table class="table table-hover table-bordered table-sm">
+  <thead class="bg-light">
+    <tr>
+      <th class="header-pointer" (click)="sortItem('name')">Product
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' && headerName === 'name' , down: litsStatus === 'desc' && headerName === 'name'}">
+        </li>
+      </th>
+      <th class="header-pointer" (click)="sortItem('Price')">Price
+        <li class="arrow alain" [ngClass]="{up: litsStatus === 'acs' && headerName === 'Price' , down: litsStatus === 'desc' && headerName === 'Price'}"></li>
+      </th>
+      <th class="header-pointer" (click)="sortItem('Cost')">Cost
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' && headerName === 'Cost' , down: litsStatus === 'desc' && headerName === 'Cost'}"></li>
+      </th>
+      <th class="header-pointer" (click)="sortItem('Description')">Description
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs'&& headerName === 'Description' , down: litsStatus === 'desc' && headerName === 'Description'}"></li>
+      </th>
+
+      <th class="header-pointer" (click)="sortItem('productCategories.name')">Category
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' && headerName === 'productCategories.name' , down: litsStatus === 'desc' && headerName === 'productCategories.name'}"></li>
+      </th>
+
+      <th class="header-pointer" (click)="sortItem('productCategories.id')">Id
+        <li class="arrow" [ngClass]="{up: litsStatus === 'acs' && headerName === 'productCategories.id' , down: litsStatus === 'desc' && headerName === 'productCategories.id'}"></li>
+      </th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <a (click)="onEditClick(prod)" matTooltip="Edit" matTooltipPosition="left" class="btn text-justify">
+          <i class="fa fa-edit fa-lg "></i>
+        </a> |
+        <a class="btn text-danger" matTooltip="Delete" matTooltipPosition="right" (click)="dialogconformMessage(prod)">
+          <i class="fa fa-trash fa-lg "></i>
+        </a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group">
+    <button type="button" class="btn btn-primary" (click)="changePageIndex(item)" *ngFor="let item of pagingList; let i = index"
+      [class.active]=" selectedIndex == i+1 ">
+      {{ item }}
+    </button>
+  </div>
+</div> -->

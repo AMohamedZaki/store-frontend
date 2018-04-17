@@ -1,8 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Product } from '../../../Model/product';
+import { IProduct } from '../../../Model/Iproduct';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { ProductCategories } from '../../../model/ProductCategories';
+import { IProductCategories } from '../../../model/IProductCategories';
 import { CategoryService } from '../../../service/category.service';
 import { ValidationNameNotToken } from '../../../validators/checkNames.validators';
 import { ProductService } from '../../../service/product.service';
@@ -15,8 +15,8 @@ import { ProductService } from '../../../service/product.service';
 export class PtoductFormComponent implements OnInit {
 
   status: string;
-  Editproduct: Product;
-  product: Product = <Product>{};
+  Editproduct: IProduct;
+  product: IProduct = <IProduct>{};
   category$;
 
   form = new FormGroup({

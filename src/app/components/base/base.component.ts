@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { MessageBoxComponent } from '../message-box/message-box.component';
-import { Options } from '../../model/options';
+import { IOptions } from '../../model/Ioptions';
 
 export class BaseComponent implements OnInit {
 
@@ -10,7 +10,7 @@ export class BaseComponent implements OnInit {
   ngOnInit() {
   }
 
-  ConformMessage(options: Options) {
+  ConformMessage(options: IOptions) {
     const dialogref = this.dialog.open(MessageBoxComponent, {
       data: options,
       panelClass: 'dailog',

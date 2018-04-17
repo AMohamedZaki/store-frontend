@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { Product } from '../../../model/product';
+import { IProduct } from '../../../model/Iproduct';
 import { ProductService } from '../../../service/product.service';
 import { BaseComponent } from '../../base/base.component';
 import { MatDialog, MatTableDataSource } from '@angular/material';
@@ -13,8 +13,8 @@ import { PtoductFormComponent } from '../ptoduct-form/ptoduct-form.component';
 })
 export class ProductContainerComponent extends BaseComponent implements OnInit {
 
-  productList: Product[] = [];
-  currentProductList: Product[] = [];
+  productList: IProduct[] = [];
+  currentProductList: IProduct[] = [];
 
   length: number;
   totalPageNumber: number;
@@ -31,7 +31,7 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
     this.refreshList();
 
     // For Paging
-    this.productService.currentItems.subscribe((item: Product[]) => {
+    this.productService.currentItems.subscribe((item: IProduct[]) => {
       this.length = item.length;
       if (this.length > 0) {
 
@@ -53,7 +53,7 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
   }
 
   // when Click Delete button
-  dialogconformMessage(product: Product) {
+  dialogconformMessage(product: IProduct) {
     this.ConformMessage({
       header: `Delete ${product.name} !`,
       body: `Are you sure you want to delete this Product ?`
@@ -68,15 +68,16 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
 
 
   refreshList() {
+    this.headerName = '';
     this.selectedIndex = 1;
-    this.productService.Get().subscribe((items: Product[]) => {
+    this.productService.Get().subscribe((items: IProduct[]) => {
       this.productList = items;
       this.productService.changeCurrentItems(this.productList);
     });
   }
 
   // open the form in Dialog
-  onEditClick(product: Product) {
+  onEditClick(product: IProduct) {
     this.dialog.open(PtoductFormComponent, {
       maxHeight: '530px',
       data: { product: product, status: 'edit' },
@@ -118,7 +119,7 @@ export class ProductContainerComponent extends BaseComponent implements OnInit {
     let firstElement: any, secondElement: any;
 
     if (propertyName !== this.headerName) {
-      this.litsStatus = '' ;
+      this.litsStatus = '';
       this.headerName = propertyName;
     }
     // inside the array of the object

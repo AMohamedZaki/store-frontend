@@ -1,17 +1,19 @@
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-
-import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
+import { CutomerContainerComponent } from './components/customer/cutomer-container/cutomer-container.component';
+import { ListViewComponent } from './components/list-view/list-view.component';
 import { MessageBoxComponent } from './components/message-box/message-box.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductContainerComponent } from './components/products/product-container/product-container.component';
 import { PtoductFormComponent } from './components/products/ptoduct-form/ptoduct-form.component';
-import { ProductService } from './service/product.service';
 import { MaterialModule } from './module/material/material.module';
 import { CategoryService } from './service/category.service';
+import { ProductService } from './service/product.service';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { CategoryService } from './service/category.service';
     NavbarComponent,
     MessageBoxComponent,
     ProductContainerComponent,
-    PtoductFormComponent
+    PtoductFormComponent,
+    ListViewComponent,
+    CutomerContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,8 @@ import { CategoryService } from './service/category.service';
     ReactiveFormsModule,
     RouterModule.forRoot([
       { path: 'product', component: ProductContainerComponent },
-      { path: 'editform', component: PtoductFormComponent }
+      { path: 'editform', component: PtoductFormComponent },
+      { path: 'ListView', component: ListViewComponent }
     ])
   ],
   providers: [

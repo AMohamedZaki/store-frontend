@@ -1,5 +1,5 @@
 
-export interface Options {
+export interface IOptions {
     header?: string ;
     body?: string ;
 

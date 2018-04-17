@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { Options } from '../../model/options';
+import { IOptions } from '../../model/options';
 
 @Component({
   selector: 'app-message-box',
@@ -13,7 +13,7 @@ export class MessageBoxComponent implements OnInit {
   body: string;
   constructor(public dialogRef: MatDialogRef<MessageBoxComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
-    if (data as Options && Object.keys(data).length > 0) {
+    if (data as IOptions && Object.keys(data).length > 0) {
       this.Header = data.header;
       this.body = data.body;
     }
