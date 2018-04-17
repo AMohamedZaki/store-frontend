@@ -27,8 +27,8 @@ export abstract class DataService<T> {
   }
 
   // get all Clients
-  Get() {
-    return this.Http.get<T[]>(this.domain + this.url + '/get', { headers: this.headers });
+   Get() {
+    return  this.Http.get<T[]>(this.domain + this.url + '/get', { headers: this.headers });
   }
 
   Post(item: T) {

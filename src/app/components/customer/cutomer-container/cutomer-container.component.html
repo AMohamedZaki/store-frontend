@@ -1,3 +1,6 @@
-<p>
-  cutomer-container works!
-</p>
+
+
+<listView 
+[Headers]="['Customer','Code' ,'Price', 'Cost', 'Description', 'Category' ]" 
+[VisableMember]="['name','code' ,'price', 'cost', 'description', 'productCategories.name']"
+[DataService]="customerService"></listView>

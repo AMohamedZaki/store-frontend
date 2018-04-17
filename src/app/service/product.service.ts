@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { DataService } from './data.service';
-import { IProduct } from '../model/product';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { IProduct } from '../model/Iproduct';
+import { DataService } from './data.service';
 
 @Injectable()
 export class ProductService extends DataService<IProduct> {

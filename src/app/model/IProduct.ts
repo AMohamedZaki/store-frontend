@@ -1,5 +1,5 @@
 
-import { IProductCategories } from './ProductCategories';
+import { IProductCategories } from './IProductCategories';
 
 export interface IProduct {
     id?: number;

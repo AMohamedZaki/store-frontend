@@ -13,6 +13,7 @@ import { PtoductFormComponent } from './components/products/ptoduct-form/ptoduct
 import { MaterialModule } from './module/material/material.module';
 import { CategoryService } from './service/category.service';
 import { ProductService } from './service/product.service';
+import { CustomerService } from './service/customer.service';
 
 
 @NgModule({
@@ -34,12 +35,13 @@ import { ProductService } from './service/product.service';
     RouterModule.forRoot([
       { path: 'product', component: ProductContainerComponent },
       { path: 'editform', component: PtoductFormComponent },
-      { path: 'ListView', component: ListViewComponent }
+      { path: 'Customer', component: CutomerContainerComponent }
     ])
   ],
   providers: [
     ProductService,
-    CategoryService
+    CategoryService,
+    CustomerService
   ],
   entryComponents: [MessageBoxComponent, PtoductFormComponent ],
   bootstrap: [AppComponent]
