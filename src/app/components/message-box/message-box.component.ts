@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, ViewEncapsulation } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { IOptions } from '../../model/options';
+import { IOptions } from '../../model/Ioptions';
 
 @Component({
   selector: 'app-message-box',

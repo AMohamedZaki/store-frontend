@@ -9,7 +9,7 @@ import { ProductService } from '../../../service/product.service';
 })
 export class CutomerContainerComponent implements OnInit {
 
-  constructor(public customerService: ProductService) {
+  constructor(public customerService: CustomerService) {
    }
 
   ngOnInit() {
