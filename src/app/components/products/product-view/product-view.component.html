@@ -1,0 +1,5 @@
+<listView [Headers]="['Name', 'Code', 'Price', 'Cost', 'Description', 'Category']" 
+          [VisableMember]="['name', 'code', 'price', 'cost', 'description', 'productCategories.name']"
+          [SourceService]="productService"
+          (addItem)="openDialog()">
+</listView>

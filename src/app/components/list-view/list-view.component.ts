@@ -12,7 +12,7 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
 
   @Input('Headers') Headers: string[] | string;
   @Input('VisableMember') VisableMember: string[] | string;
-  @Input('DataService') DataService: DataService<T>;
+  @Input('SourceService') SourceService: DataService<T>;
 
   @Output('addItem') addItem = new EventEmitter();
   @Output('deleteItem') deleteItem = new EventEmitter();
@@ -31,7 +31,7 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
   totalPageNumber: number;
   pagingList: number[] = [];
   priveusIndex = 0;
-  indexSize = 0;
+  indexSize = 0; 
 
   constructor(private matdialog: MatDialog) {
     super(matdialog);
@@ -44,7 +44,7 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
 
   chageListLength(length) {
     this.pagingList = []
-    this.DataService.currentItems.subscribe((item: T[]) => {
+    this.SourceService.currentItems.subscribe((item: T[]) => {
       this.sourceListSize = item.length;
       if (this.sourceListSize > 0) {
         this.totalPageNumber = Math.floor(this.sourceListSize / length);
@@ -53,7 +53,7 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
           this.pagingList[index] = index + 1;
         }
 
-        this.currentList = this.dataSourceList;
+        this.currentList = item;
         this.currentList = this.currentList.slice(0, length);
 
       }
@@ -117,10 +117,10 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
   refreshList() {
     this.sortStatus = '';
     this.selectedIndex = 1;
-    if (this.DataService) {
-      this.DataService.Get().subscribe((itemList: T[]) => {
+    if (this.SourceService) {
+      this.SourceService.Get().subscribe((itemList: T[]) => {
         this.dataSourceList = itemList;
-        this.DataService.changeCurrentItems(itemList);
+        this.SourceService.changeCurrentItems(this.dataSourceList);
       });
     }
   }
@@ -150,7 +150,10 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
       const arrayName = propertyName.substring(0, charindex);
       header = arrayName;
       arrayElementName = propertyName.substring(charindex + 1);
-      return element[header][arrayElementName.toLowerCase()];
+      if( Object.keys(element[header]).length <= 0) { 
+        return null ;
+      }else
+      {return element[header][arrayElementName.toLowerCase()];}
     } else {
       return element[propertyName];
     }

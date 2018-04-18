@@ -23,8 +23,9 @@ export class PtoductFormComponent implements OnInit {
     name: new FormControl('', [Validators.required]),
     price: new FormControl(),
     cost: new FormControl(),
+    code: new FormControl('', [Validators.required]),
     description: new FormControl(),
-    categoryId: new FormControl
+    productCategories: new FormControl()
   });
   constructor(
     private categoryService: CategoryService,
@@ -34,7 +35,7 @@ export class PtoductFormComponent implements OnInit {
     if (data && Object.keys(data).length > 0) {
       this.status = data.status;
     }
-
+    this.product.productCategories
     this.category$ = categoryService.Get();
   }
 
@@ -53,10 +54,11 @@ export class PtoductFormComponent implements OnInit {
 
   submitForm() {
     if (this.status === 'edit') {
-      this.productService.Put(this.data.product.id, this.form.value).subscribe(
-        () => this.dialogRef.close('done'));
+      this.productService.Put(this.data.product.id, this.product).subscribe(
+        (item) => this.dialogRef.close({ result: 'done', data: item }));
     } else {
-      this.productService.Post(this.form.value).subscribe(() => this.dialogRef.close('done') );
+      this.productService.Post(this.product).subscribe(
+        (item) => this.dialogRef.close({ result: 'done', data: item }));
     }
   }
 

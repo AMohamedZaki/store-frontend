@@ -15,11 +15,8 @@
     <form [formGroup]="form" (ngSubmit)="submitForm()">
       <div class="prod-container">
         <mat-form-field>
-          <input matInput id="prodName" type="text"
-           placeholder="Name"
-           required
-           [(ngModel)]="product.name" formControlName="name">
-          <mat-error *ngIf="getElement('name').touched && getElement('name').invalid"> 
+          <input matInput id="prodName" type="text" placeholder="Name" required [(ngModel)]="product.name" formControlName="name">
+          <mat-error *ngIf="getElement('name').touched && getElement('name').invalid">
             <div *ngIf="getElement('name')['errors'].required">
               this field is required
             </div>
@@ -30,20 +27,18 @@
         </mat-form-field>
 
         <mat-form-field>
-          <mat-select placeholder="Category" formControlName="categoryId" [(ngModel)]="product.categoryId">
+          <mat-select placeholder="Category" formControlName="productCategories" [(ngModel)]="product.categoryId">
             <mat-option *ngFor="let item of category$ | async" [value]="item.id">
               {{ item.name }}
             </mat-option>
           </mat-select>
         </mat-form-field>
 
-
         <mat-form-field>
           <input matInput type="number" placeholder="Cost" min="0" formControlName="cost" [(ngModel)]="product.cost">
           <span matPrefix>£&nbsp;</span>
           <span matSuffix>.00</span>
         </mat-form-field>
-
 
         <mat-form-field>
           <input matInput type="number" placeholder="Price" min="0" formControlName="price" [(ngModel)]="product.price">
@@ -52,21 +47,20 @@
         </mat-form-field>
 
         <mat-form-field>
-          <textarea name="Description" placeholder="Description" 
-                    matInput id="prodDescription"
-                    formControlName="description"
-                    [(ngModel)]="product.description"
-                    cols="50" rows="8"
-                    class="form-control form-control-sm"></textarea>
+          <input matInput type="text" placeholder="Code" min="0" formControlName="code" [(ngModel)]="product.code" required>
+          <mat-error *ngIf="getElement('code').touched && getElement('code').invalid">
+            <div *ngIf="getElement('code')['errors'].required">
+              this field is required
+            </div>
+          </mat-error>
         </mat-form-field>
 
-
-        <div class="form-group">
-          <button mat-button class="btn btn-primary btn-sm" type="submit">Save</button>
-        </div>
+        <mat-form-field>
+          <textarea name="Description" placeholder="Description" matInput id="prodDescription" formControlName="description" [(ngModel)]="product.description"
+            cols="50" rows="6" class="form-control form-control-sm"></textarea>
+        </mat-form-field>
+        <button mat-button class="btn btn-primary btn-sm text-center" [disabled]="form.invalid" type="submit">Save</button>
       </div>
     </form>
-
   </div>
-
 </div>

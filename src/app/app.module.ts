@@ -8,12 +8,12 @@ import { CutomerContainerComponent } from './components/customer/cutomer-contain
 import { ListViewComponent } from './components/list-view/list-view.component';
 import { MessageBoxComponent } from './components/message-box/message-box.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { ProductContainerComponent } from './components/products/product-container/product-container.component';
+import { ProductViewComponent } from './components/products/product-view/product-view.component';
 import { PtoductFormComponent } from './components/products/ptoduct-form/ptoduct-form.component';
 import { MaterialModule } from './module/material/material.module';
 import { CategoryService } from './service/category.service';
-import { ProductService } from './service/product.service';
 import { CustomerService } from './service/customer.service';
+import { ProductService } from './service/product.service';
 
 
 @NgModule({
@@ -21,10 +21,10 @@ import { CustomerService } from './service/customer.service';
     AppComponent,
     NavbarComponent,
     MessageBoxComponent,
-    ProductContainerComponent,
     PtoductFormComponent,
     ListViewComponent,
-    CutomerContainerComponent
+    CutomerContainerComponent,
+    ProductViewComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +33,7 @@ import { CustomerService } from './service/customer.service';
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot([
-      { path: 'product', component: ProductContainerComponent },
+      { path: 'product', component: ProductViewComponent },
       { path: 'editform', component: PtoductFormComponent },
       { path: 'Customer', component: CutomerContainerComponent }
     ])
