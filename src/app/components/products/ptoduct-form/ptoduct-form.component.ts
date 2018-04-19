@@ -1,10 +1,8 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { Component, Inject, OnInit } from '@angular/core';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { IProduct } from '../../../Model/Iproduct';
-import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
-import { IProductCategories } from '../../../model/IProductCategories';
 import { CategoryService } from '../../../service/category.service';
-import { ValidationNameNotToken } from '../../../validators/checkNames.validators';
 import { ProductService } from '../../../service/product.service';
 
 @Component({

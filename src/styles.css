@@ -6,3 +6,8 @@
 .dailog .mat-dialog-container {
     padding: 0px;
   }
+
+
+  .mat-progress-spinner circle, .mat-spinner circle { 
+    color: red;
+  }

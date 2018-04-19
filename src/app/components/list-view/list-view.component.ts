@@ -31,7 +31,7 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
   totalPageNumber: number;
   pagingList: number[] = [];
   priveusIndex = 0;
-  indexSize = 0; 
+  indexSize = 0;
 
   constructor(private matdialog: MatDialog) {
     super(matdialog);
@@ -45,7 +45,10 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
   chageListLength(length) {
     this.pagingList = []
     this.SourceService.currentItems.subscribe((item: T[]) => {
-      this.sourceListSize = item.length;
+      if (this.sourceListSize !== item.length) {
+        this.selectedIndex = 1;
+        this.sourceListSize = item.length;
+      }
       if (this.sourceListSize > 0) {
         this.totalPageNumber = Math.floor(this.sourceListSize / length);
         (this.sourceListSize % length) > 0 ? this.totalPageNumber += 1 : this.totalPageNumber += 0;
@@ -150,10 +153,9 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
       const arrayName = propertyName.substring(0, charindex);
       header = arrayName;
       arrayElementName = propertyName.substring(charindex + 1);
-      if( Object.keys(element[header]).length <= 0) { 
-        return null ;
-      }else
-      {return element[header][arrayElementName.toLowerCase()];}
+      if (Object.keys(element[header]).length <= 0) {
+        return null;
+      } else { return element[header][arrayElementName.toLowerCase()]; }
     } else {
       return element[propertyName];
     }

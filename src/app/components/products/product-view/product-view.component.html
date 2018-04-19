@@ -1,5 +1,7 @@
 <listView [Headers]="['Name', 'Code', 'Price', 'Cost', 'Description', 'Category']" 
           [VisableMember]="['name', 'code', 'price', 'cost', 'description', 'productCategories.name']"
           [SourceService]="productService"
-          (addItem)="openDialog()">
+          (addItem)="openDialog()"
+          (editItem)="editDialog()"
+          (deleteItem)="deleteDialog()">
 </listView>

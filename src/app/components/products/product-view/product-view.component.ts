@@ -32,14 +32,21 @@ export class ProductViewComponent implements OnInit {
         panelClass: 'dailog',
         position: { top: '20px' }
       }).afterClosed().subscribe((item) => {
-        console.log('result', item.result);
-        console.log('data', item.data);
         if (item.result === 'done') {
-          console.log(item.data);
           this.productList.push(item.data);
-          this.productService.changeCurrentItems(this.productList);
+         this.productService.changeCurrentItems(this.productList);
         }
       });
+    }
+
+
+    editDialog() { 
+
+    }
+
+
+    deleteDialog() { 
+      
     }
 
 

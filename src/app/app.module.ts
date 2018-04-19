@@ -14,6 +14,8 @@ import { MaterialModule } from './module/material/material.module';
 import { CategoryService } from './service/category.service';
 import { CustomerService } from './service/customer.service';
 import { ProductService } from './service/product.service';
+import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
+import { AccountService } from './service/account.service';
 
 
 @NgModule({
@@ -24,7 +26,8 @@ import { ProductService } from './service/product.service';
     PtoductFormComponent,
     ListViewComponent,
     CutomerContainerComponent,
-    ProductViewComponent
+    ProductViewComponent,
+    ProgressSpinnerComponent
   ],
   imports: [
     BrowserModule,
@@ -35,13 +38,15 @@ import { ProductService } from './service/product.service';
     RouterModule.forRoot([
       { path: 'product', component: ProductViewComponent },
       { path: 'editform', component: PtoductFormComponent },
-      { path: 'Customer', component: CutomerContainerComponent }
+      { path: 'Customer', component: CutomerContainerComponent },
+      { path: 'loading', component: ProgressSpinnerComponent }
     ])
   ],
   providers: [
     ProductService,
     CategoryService,
-    CustomerService
+    CustomerService,
+    AccountService
   ],
   entryComponents: [MessageBoxComponent, PtoductFormComponent ],
   bootstrap: [AppComponent]

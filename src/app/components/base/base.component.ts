@@ -19,5 +19,7 @@ export class BaseComponent implements OnInit {
     return dialogref.afterClosed();
   }
 
+  loading
+
 
 }
