@@ -39,7 +39,7 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
 
   ngOnInit() {
     this.refreshList();
-    this.chageListLength(this.selectedLength);
+    this.chageListLength(this.selectedLength);    
   }
 
   chageListLength(length) {
@@ -52,10 +52,10 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
       if (this.sourceListSize > 0) {
         this.totalPageNumber = Math.floor(this.sourceListSize / length);
         (this.sourceListSize % length) > 0 ? this.totalPageNumber += 1 : this.totalPageNumber += 0;
+        this.pagingList = [];
         for (let index = 0; index < this.totalPageNumber; index++) {
           this.pagingList[index] = index + 1;
         }
-
         this.currentList = item;
         this.currentList = this.currentList.slice(0, length);
 
@@ -133,7 +133,6 @@ export class ListViewComponent<T> extends BaseComponent implements OnInit {
   }
 
   onDelete(item: any) {
-    console.log(item);
     this.deleteItem.emit(item);
   }
 

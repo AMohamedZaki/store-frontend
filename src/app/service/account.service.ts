@@ -1,17 +1,30 @@
 import { Injectable } from '@angular/core';
 import { DataService } from './data.service';
 import { HttpClient } from '@angular/common/http';
-import { IAccount } from '../model/IAccount';
+import { IAccount, IRegestar } from '../model/IAccount';
 
 @Injectable()
 export class AccountService extends DataService<IAccount> {
 
-  constructor(http: HttpClient) {
+  constructor(private http: HttpClient) {
     super(http);
     this.url = 'account';
   }
 
 
+  checkUserMail(UserMail: string) {
+    return this.http.post(this.url + '/checkUserMail', UserMail, { headers: this.headers });
+  }
 
+
+  Login(account: IAccount) {
+    return this.http.post(this.url + '/Login', account, { headers: this.headers });
+  }
+
+  Regiester(account: IRegestar) { 
+    return this.http.post(this.url + '/Regiester', account, { headers: this.headers });    
+  }
+
+  
 
 }

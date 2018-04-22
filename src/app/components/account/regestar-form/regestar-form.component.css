@@ -1,0 +1,20 @@
+.account-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+.account-container > * {
+    width: 75%;
+}
+
+.shadow{ 
+    background-color: white;
+    box-shadow: 0 0 9px 2px black;
+    width: 93% ;
+    -webkit-box-shadow: 0 0 9px 2px black;
+    align-items: center;
+    margin: 0 auto;
+    overflow: hidden;
+    justify-content: space-around;
+    float: none;
+}

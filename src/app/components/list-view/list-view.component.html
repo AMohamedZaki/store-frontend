@@ -53,7 +53,7 @@
     <div class="input-group input-group-sm">
       <label class="h5">Length: </label>
       <select class="form-control" [(ngModel)]="selectedLength" name="selectedLength" (change)="changeListSize()">
-        <option *ngFor="let len of lengthList" [value]="len"> {{ len }} </option>
+        <option *ngFor="let len of lengthList" [value]="len"> {{ len }} </option> 
       </select>
     </div>
   </div>

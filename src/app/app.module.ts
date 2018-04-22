@@ -16,6 +16,7 @@ import { CustomerService } from './service/customer.service';
 import { ProductService } from './service/product.service';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { AccountService } from './service/account.service';
+import { RegestarFormComponent } from './components/account/regestar-form/regestar-form.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { AccountService } from './service/account.service';
     ListViewComponent,
     CutomerContainerComponent,
     ProductViewComponent,
-    ProgressSpinnerComponent
+    ProgressSpinnerComponent,
+    RegestarFormComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { AccountService } from './service/account.service';
       { path: 'product', component: ProductViewComponent },
       { path: 'editform', component: PtoductFormComponent },
       { path: 'Customer', component: CutomerContainerComponent },
-      { path: 'loading', component: ProgressSpinnerComponent }
+      { path: 'loading', component: ProgressSpinnerComponent },
+      { path: 'regestar', component: RegestarFormComponent }
     ])
   ],
   providers: [
