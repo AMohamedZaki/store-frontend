@@ -1,37 +1,57 @@
-<div class="container">
-  <div class="row shadow">
-    <div class="col-6 p-5">
-      <div class="center">
-        <span class="h3">
-          Sign Up
-        </span>
-      </div>
-    </div>      
-      <div class="col-6">
-        <form [formGroup]="form" (ngSubmit)="regestar()">
-          <div class="account-container">
-            <mat-form-field>
-              <input type="text" matInput placeholder="UserName">
-            </mat-form-field>
-
-
-            <mat-form-field>
-              <input type="email" matInput placeholder="Mail">
-            </mat-form-field>
-
-
-            <mat-form-field>
-              <input type="password" matInput placeholder="Password">
-            </mat-form-field>
-
-            <div class="form-group">
-              <div class="inline">
-                <button type="submit" class="btn btn-primary">Sign up</button>
-                <button type="reset" class="btn btn-danger">Reset</button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
+<div class="shadow">
+  <div class="text-center text-capitalize">
+    <span class="h3">
+      sign up
+    </span>
   </div>
+  <form [formGroup]="form" class="w-100" (ngSubmit)="regestar()">
+    <div class="account-container">
+      <mat-form-field>
+        <input type="text" matInput placeholder="UserName" autocomplete="username" required formControlName="userName">
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input type="email" matInput placeholder="Mail" autocomplete="email" required formControlName="mail">
+      </mat-form-field>
+
+
+      <mat-form-field>
+        <input [type]="passwordHide? 'password': 'text'"  matInput
+               placeholder="Password"
+               autocomplete="current-password"
+               required formControlName="password">
+        <mat-icon
+        matSuffix
+        (click)="passwordHide = !passwordHide">
+         {{ passwordHide ? 'visibility' : 'visibility_off' }}
+        </mat-icon>
+
+        <mat-error>
+          <div *ngIf="getElement('password')['errors']?.passwordShouldBeTheSame">
+            Password not match
+          </div>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input [type]="confirmPasswordHide? 'password': 'text'"
+               matInput placeholder="Confirm password"
+               autocomplete="current-password"
+               required formControlName="confirmPassword">
+
+        <mat-icon
+         matSuffix 
+         (click)="confirmPasswordHide = !confirmPasswordHide"> 
+         {{ confirmPasswordHide ? 'visibility' : 'visibility_off' }}
+        </mat-icon>
+
+      </mat-form-field>
+      <div class="form-group">
+        <div class="inline">
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid" >Sign up</button>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>

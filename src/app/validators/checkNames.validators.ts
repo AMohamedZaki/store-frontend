@@ -1,6 +1,3 @@
-import { AbstractControl, Validator, ValidationErrors, AsyncValidator } from '@angular/forms';
-import { ProductService } from '../service/product.service';
-import { Injector, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -38,13 +35,4 @@ export class ValidationNameNotToken {
 
 }
 
-
-
-// @Injectable()
-// export class NameValidator implements AsyncValidator {
-    
-//     validate = (control: AbstractControl) => this.userService.chackProductName(control.value);
-//     constructor(private userService: ProductService) { }
-
-// }
 

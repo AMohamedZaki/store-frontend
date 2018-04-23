@@ -54,12 +54,13 @@
             </div>
           </mat-error>
         </mat-form-field>
-
         <mat-form-field>
           <textarea name="Description" placeholder="Description" matInput id="prodDescription" formControlName="description" [(ngModel)]="product.description"
             cols="50" rows="6" class="form-control form-control-sm"></textarea>
         </mat-form-field>
-        <button mat-button class="btn btn-primary btn-sm text-center" [disabled]="form.invalid" type="submit">Save</button>
+        <!-- <button type="button" [disabled]="form.invalid" mat-button class="mat-button bg-primary">Click me!</button> -->
+        
+        <button mat-button class="mat-button bg-primary">Click me!</button>
       </div>
     </form>
   </div>
