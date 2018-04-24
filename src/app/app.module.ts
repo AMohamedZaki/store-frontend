@@ -17,6 +17,7 @@ import { ProductService } from './service/product.service';
 import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { AccountService } from './service/account.service';
 import { RegestarFormComponent } from './components/account/regestar-form/regestar-form.component';
+import { ValidateEqualDirective } from './directive/validate-equal.directive';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { RegestarFormComponent } from './components/account/regestar-form/regest
     CutomerContainerComponent,
     ProductViewComponent,
     ProgressSpinnerComponent,
-    RegestarFormComponent
+    RegestarFormComponent,
+    ValidateEqualDirective
   ],
   imports: [
     BrowserModule,

@@ -7,49 +7,40 @@
   <form [formGroup]="form" class="w-100" (ngSubmit)="regestar()">
     <div class="account-container">
       <mat-form-field>
-        <input type="text" matInput placeholder="UserName" autocomplete="username" required formControlName="userName">
+        <input type="text" matInput placeholder="UserName" autocomplete="username" required [(ngModel)]="account.userName" formControlName="userName">
       </mat-form-field>
 
 
       <mat-form-field>
-        <input type="email" matInput placeholder="Mail" autocomplete="email" required formControlName="mail">
+        <input type="email" matInput placeholder="Mail" autocomplete="email" required [(ngModel)]="account.email" formControlName="mail">
       </mat-form-field>
 
+      {{ account?.password }}
+      <mat-form-field>
+        <input [type]="passwordHide? 'password': 'text'" matInput placeholder="Password" autocomplete="current-password" required
+          [(ngModel)]="account.password" formControlName="password">
+        <mat-icon matSuffix (click)="passwordHide = !passwordHide">
+          {{ passwordHide ? 'visibility' : 'visibility_off' }}
+        </mat-icon>
+      </mat-form-field>
 
       <mat-form-field>
-        <input [type]="passwordHide? 'password': 'text'"  matInput
-               placeholder="Password"
-               autocomplete="current-password"
-               required formControlName="password">
-        <mat-icon
-        matSuffix
-        (click)="passwordHide = !passwordHide">
-         {{ passwordHide ? 'visibility' : 'visibility_off' }}
+        <input [type]="confirmPasswordHide? 'password': 'text'" matInput placeholder="Confirm password" autocomplete="current-password"
+          required formControlName="confirmPassword">
+
+        <mat-icon matSuffix (click)="confirmPasswordHide = !confirmPasswordHide">
+          {{ confirmPasswordHide ? 'visibility' : 'visibility_off' }}
         </mat-icon>
 
         <mat-error>
-          <div *ngIf="getElement('password')['errors']?.passwordShouldBeTheSame">
+          <div *ngIf="getElement('confirmPassword')['errors']?.passwordShouldBeTheSame">
             Password not match
           </div>
         </mat-error>
       </mat-form-field>
-
-      <mat-form-field>
-        <input [type]="confirmPasswordHide? 'password': 'text'"
-               matInput placeholder="Confirm password"
-               autocomplete="current-password"
-               required formControlName="confirmPassword">
-
-        <mat-icon
-         matSuffix 
-         (click)="confirmPasswordHide = !confirmPasswordHide"> 
-         {{ confirmPasswordHide ? 'visibility' : 'visibility_off' }}
-        </mat-icon>
-
-      </mat-form-field>
       <div class="form-group">
         <div class="inline">
-          <button type="submit" class="btn btn-primary" [disabled]="form.invalid" >Sign up</button>
+          <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Sign up</button>
         </div>
       </div>
     </div>
