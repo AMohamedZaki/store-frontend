@@ -1,19 +1,17 @@
-import { AbstractControl, ValidatorFn } from "@angular/forms";
+import { AbstractControl, ValidatorFn, FormGroup, ValidationErrors } from "@angular/forms";
 
 
 export class confirmPasswordvalid {
 
-    static passwordShouldBeTheSame(elementName: string): ValidatorFn {
-        return (control: AbstractControl) => {
-            const passwordElemnt = this.getElement(elementName) as HTMLElement;
-            if (passwordElemnt) {
-                if (control.value !== (passwordElemnt['value'] as string))
-                return { passwordShouldBeTheSame: true }
-            else {
-                return null;
-            }
+    static passwordShouldBeTheSame(group: FormGroup): ValidationErrors | null {
+      
+        if (group.controls['password'].value === group.controls['confirmPassword'].value) {
+            return null;
         }
-        }
+
+        return {
+            mismatch: true
+        };
     }
 
     static getElement(element: string): HTMLElement {

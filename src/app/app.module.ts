@@ -4,20 +4,19 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
+import { RegestarFormComponent } from './components/account/regestar-form/regestar-form.component';
 import { CutomerContainerComponent } from './components/customer/cutomer-container/cutomer-container.component';
 import { ListViewComponent } from './components/list-view/list-view.component';
 import { MessageBoxComponent } from './components/message-box/message-box.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProductViewComponent } from './components/products/product-view/product-view.component';
 import { PtoductFormComponent } from './components/products/ptoduct-form/ptoduct-form.component';
+import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
 import { MaterialModule } from './module/material/material.module';
+import { AccountService } from './service/account.service';
 import { CategoryService } from './service/category.service';
 import { CustomerService } from './service/customer.service';
 import { ProductService } from './service/product.service';
-import { ProgressSpinnerComponent } from './components/progress-spinner/progress-spinner.component';
-import { AccountService } from './service/account.service';
-import { RegestarFormComponent } from './components/account/regestar-form/regestar-form.component';
-import { ValidateEqualDirective } from './directive/validate-equal.directive';
 
 
 @NgModule({
@@ -30,8 +29,7 @@ import { ValidateEqualDirective } from './directive/validate-equal.directive';
     CutomerContainerComponent,
     ProductViewComponent,
     ProgressSpinnerComponent,
-    RegestarFormComponent,
-    ValidateEqualDirective
+    RegestarFormComponent
   ],
   imports: [
     BrowserModule,

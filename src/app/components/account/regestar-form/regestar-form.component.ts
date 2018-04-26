@@ -17,14 +17,15 @@ export class RegestarFormComponent implements OnInit {
   form = new FormGroup({
     userName: new FormControl('', [Validators.required]),
     mail: new FormControl('', [Validators.required]),
-    password: new FormControl('', [Validators.required]),
-    confirmPassword: new FormControl('', [Validators.required,
-    confirmPasswordvalid.passwordShouldBeTheSame('password')])
+    passwords: new FormGroup({
+      password: new FormControl('', [Validators.required]),
+      confirmPassword: new FormControl('', [Validators.required])
+    }, {validators: confirmPasswordvalid.passwordShouldBeTheSame})
   });
 
   constructor(private accountService: AccountService) { }
   ngOnInit() {
-
+    
   }
 
   getElement(element: string): AbstractControl {
@@ -36,8 +37,6 @@ export class RegestarFormComponent implements OnInit {
   }
 
   getElement2(element: string): HTMLElement {
-    const e = document.querySelector('input[formControlName="' + element + '"]');
-  //  console.log(e['value']);
     return document.querySelector('input[formControlName="' + element + '"]') as HTMLElement;
   }
 
