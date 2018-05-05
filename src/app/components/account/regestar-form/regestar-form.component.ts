@@ -33,7 +33,10 @@ export class RegestarFormComponent implements OnInit {
   }
 
   regestar() {
-
+    this.account.userName = (this.account.userName as string).toLowerCase();  
+      this.accountService.Regiester(this.account).subscribe((item) => {
+          console.log(item);
+      });
   }
 
   getElement2(element: string): HTMLElement {

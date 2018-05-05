@@ -13,16 +13,16 @@ export class AccountService extends DataService<IAccount> {
 
 
   checkUserMail(UserMail: string) {
-    return this.http.post(this.url + '/checkUserMail', UserMail, { headers: this.headers });
+    return this.http.post(this.domain + this.url + '/checkUserMail', UserMail, { headers: this.headers });
   }
 
 
   Login(account: IAccount) {
-    return this.http.post(this.url + '/Login', account, { headers: this.headers });
+    return this.http.post(this.domain + this.url + '/Login', account, { headers: this.headers });
   }
 
   Regiester(account: IRegestar) { 
-    return this.http.post(this.url + '/Regiester', account, { headers: this.headers });    
+    return this.http.post(this.domain + this.url + '/Regiester', account, { headers: this.headers });    
   }
 
   

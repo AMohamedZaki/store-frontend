@@ -17,6 +17,9 @@ import { AccountService } from './service/account.service';
 import { CategoryService } from './service/category.service';
 import { CustomerService } from './service/customer.service';
 import { ProductService } from './service/product.service';
+import { SupplierFormComponent } from './components/supplier/supplier-form/supplier-form.component';
+import { SupplierViewComponent } from './components/supplier/supplier-view/supplier-view.component';
+import { SupplierService } from './service/supplier.service';
 
 
 @NgModule({
@@ -29,7 +32,9 @@ import { ProductService } from './service/product.service';
     CutomerContainerComponent,
     ProductViewComponent,
     ProgressSpinnerComponent,
-    RegestarFormComponent
+    RegestarFormComponent,
+    SupplierFormComponent,
+    SupplierViewComponent
   ],
   imports: [
     BrowserModule,
@@ -42,13 +47,15 @@ import { ProductService } from './service/product.service';
       { path: 'editform', component: PtoductFormComponent },
       { path: 'Customer', component: CutomerContainerComponent },
       { path: 'loading', component: ProgressSpinnerComponent },
-      { path: 'regestar', component: RegestarFormComponent }
+      { path: 'regestar', component: RegestarFormComponent },
+      { path: 'Supplier', component: SupplierViewComponent }
     ])
   ],
   providers: [
     ProductService,
     CategoryService,
     CustomerService,
+    SupplierService,
     AccountService
   ],
   entryComponents: [MessageBoxComponent, PtoductFormComponent ],
