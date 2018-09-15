@@ -20,6 +20,7 @@ import { ProductService } from './service/product.service';
 import { SupplierFormComponent } from './components/supplier/supplier-form/supplier-form.component';
 import { SupplierViewComponent } from './components/supplier/supplier-view/supplier-view.component';
 import { SupplierService } from './service/supplier.service';
+import { FormValidationComponent } from './components/form-validation/form-validation.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SupplierService } from './service/supplier.service';
     ProgressSpinnerComponent,
     RegestarFormComponent,
     SupplierFormComponent,
-    SupplierViewComponent
+    SupplierViewComponent,
+    FormValidationComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { SupplierService } from './service/supplier.service';
       { path: 'Customer', component: CutomerContainerComponent },
       { path: 'loading', component: ProgressSpinnerComponent },
       { path: 'regestar', component: RegestarFormComponent },
-      { path: 'Supplier', component: SupplierViewComponent }
+      { path: 'Supplier', component: SupplierViewComponent },
+      { path: 'validform', component: FormValidationComponent }
     ])
   ],
   providers: [

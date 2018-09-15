@@ -43,6 +43,6 @@ export class RegestarFormComponent implements OnInit {
     return document.querySelector('input[formControlName="' + element + '"]') as HTMLElement;
   }
 
-  getElem
+  
 
 }

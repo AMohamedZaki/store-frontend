@@ -4,7 +4,7 @@ import { AbstractControl, ValidatorFn, FormGroup, ValidationErrors } from "@angu
 export class confirmPasswordvalid {
 
     static passwordShouldBeTheSame(group: FormGroup): ValidationErrors | null {
-      
+
         if (group.controls['password'].value === group.controls['confirmPassword'].value) {
             return null;
         }
@@ -18,3 +18,20 @@ export class confirmPasswordvalid {
         return document.querySelector('input[formControlName="' + element + '"]') as HTMLElement;
     }
 }
+
+
+
+export class FileValidation {
+    static checkFileExtention(control: AbstractControl): ValidationErrors | null {
+        const index = (control.value as string).lastIndexOf('.');
+        const value = (control.value as string).substring(+index + 1);
+        if (control.value === ''  || value === 'pdf') {
+            return null;
+        }
+       
+        return {
+            checkFileExtention: true
+        };
+    }
+}
+

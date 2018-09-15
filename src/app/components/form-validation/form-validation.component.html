@@ -1,0 +1,14 @@
+<form [formGroup]="form">
+  <div class="form-group">
+    <label>
+      File Upload
+    </label>
+    <input type="file" class="form-control" placeholder="UserName" autocomplete="username" formControlName="fileUploader">
+    <div class="alert alert-danger" *ngIf="getfileUploader.invalid && getfileUploader.touched">
+      <div *ngIf="getfileUploader['errors'].checkFileExtention">
+        not Supported Format
+      </div>
+    </div>
+    <button type="button" [disabled]="form.invalid" class="btn btn-danger"> OK </button>
+  </div>
+</form>
